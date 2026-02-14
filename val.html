@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=DM+Serif+Display:ital@0;1&family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="val.css">
+        <link rel="icon" type="image/x-icon" href="IMG_7719_cropped_processed_by_imagy.png">
+        <title>NEYCIU</title>
+    </head>
+    <body>
+
+            <!-- 
+      OPENING TEXT SECTION
+      ====================
+      This section displays a series of text messages that fade in and out sequentially
+      before revealing the envelope. It creates a nice introduction effect.
+      
+      How it works:
+      1. All text elements start hidden (opacity: 0) and positioned slightly below
+      2. JavaScript adds the 'active' class to each text one by one
+      3. When a text gets the 'active' class, it fades in and slides up smoothly
+      4. After all texts are shown, this section fades out and the envelope appears
+      
+      You can customize the messages by changing the text inside each <h2> tag.
+      To add more messages, just add more <div class="text"> elements.
+    -->
+    <section class="opening-section">
+      <!-- Container that centers all text elements -->
+      <div class="text-container">
+        <!-- First opening message - appears first -->
+        <div class="text"><h2>Happy Valentines Day Zhink!</h2></div>
+        <!-- Second opening message - appears after the first one fades out -->
+        <div class="text"><h2>I Made A Little Something For You</h2></div>
+        <!-- Third opening message - appears after the second one fades out -->
+        <div class="text"><h2>I Hope You Like It! ^ ^</h2></div>
+      </div>
+    </section>
+
+        <p class="instruction">Click the heart!</p>
+        <div class="container">
+            <label>
+            <div class="heart">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg"></img>
+            </div>
+            <input id="messageState" type="checkbox" style="display:none"/>
+            </label>
+            <div class="message">
+                <h1 style="font-family: Cinzel, serif; font-size: 30px; letter-spacing: 1.2px;">Hey Zhink,</h1>
+                <p> 
+                    <span>
+                        &emsp; I know na medyo random nga yung message na ito and I acknowledge that this is maybe a little over the top  WHWHAWWA, but in this message I just want to say happy valentines day to you and let you know that your presence really lightens up my day and many others aswell :>
+                    </span>
+                    <br> <br>
+                    <span>
+                        &emsp; Your laugh and joyfulness is really contagious and I hope you never lose that beautiful spark within you. Even back when we weren’t that close, I could see that you truly are a kind and caring person which made me really glad that I made the effort to get to know you better!
+                    </span>
+                    <br> <br>      
+                    <span>
+                        &emsp; During the times we played Valo with others (i.e Rid, Cheryl, & Zena) or just duo’d together, napapansin tlga ako sa AURA mo WHWAHAWHA napakajoyful tlga mahirap di makisama e. I also really like hearing you yap/talk about random things! There’s something about the way you tell stories or go on little rants that I find funny and genuinely enjoy. So thats why as time moves on I hope I can get to know you better and be able to have more fun memories with you.
+                    </span>
+                    <br> <br>
+                    <span>
+                        &emsp; I hope you have a wonderful day and that this message brings a smile to your face. Happy Valentines Day Zhink.
+                    </span>
+                </p>
+                <div class="sincere">
+                    <p style="font-weight: bold;"> Your Admirer,</p>
+                    <p>Jiyann</p>
+                 </div>
+            </div>
+        </div>
+        
+        <script src="jquery.js"></script>
+        <script src="jquery2.1.js"></script>
+        <script src="jquery2.2.js"></script>
+        <script src="val-2.js"></script>
+        <script defer src="val.js"></script>
+
+    <audio id="bgm" loop>
+    <source src="Arthur Nery - Binhi.mp3" type="audio/mp3">
+    </audio>
+
+    </body>
+</html>
+

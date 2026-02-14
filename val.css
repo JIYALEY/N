@@ -1,0 +1,333 @@
+*{
+	box-sizing: border-box;
+}
+
+h1,
+p {
+	font-family: "Quicksand";
+  font-optical-sizing: auto;
+}
+
+h1 {
+	font-weight: 200;
+}
+
+body {
+	background-color: #e2afde;
+	margin: 0px;
+	padding: 0;
+  	overflow: hidden; /* Prevent scrolling during the opening animation */
+  	min-height: 100vh; /* Ensure full viewport height */
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.instruction{
+	position: absolute;
+	font-size: 1.6rem;
+	color: rgba(255, 255, 255, 0.554);
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: "montserrat", extrabold;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.heart {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	transition: transform 2s;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.heart > img {
+	width: 50px;
+	height: auto;
+
+	animation-name: beat;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+
+.message {
+	padding: 25px;
+	background-color: #eee;
+	font-family: "Quicksand", serif;
+  font-optical-sizing: auto;
+	font-size: clamp(16px, 10vw, 17px);
+	text-align: justify;
+	line-height: 1.5em;
+	width: 80%;
+	max-width: 550px;
+	height: 78%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 0;
+
+	animation-name: openmsg;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-play-state: paused;
+	animation-fill-mode: forwards;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	border-radius: 5px;
+	overflow: scroll;
+	scrollbar-width: none;
+}
+ 
+.message .sincere{
+	text-align: left;
+	font-family: "Cinzel, serif";
+	font-size: 14px;
+	line-height: 1.2em;
+}
+
+.message .sincere p{
+	margin: 0;
+}
+
+@keyframes beat {
+	0% {
+		width: 50px;
+	}
+	25% {
+		width: 58px;
+	}
+	30% {
+		width: 50px;
+	}
+	50% {
+		width: 45px;
+	}
+	60% {
+		width: 50px;
+	}
+	75% {
+		width: 58px;
+	}
+	100% {
+		width: 50px;
+	}
+}
+
+@keyframes openmsg {
+	0% {
+		height: 0px;
+		padding: 0px 20px;
+	}
+	100% {
+		height: 75%;
+		padding: 20px 20px;
+	}
+}
+
+@keyframes heartMove {
+	0% {
+		top: 50%
+	}
+	100% {
+		top: 85%;
+		transform: translate(-50%, 0);
+	}
+}
+
+.openNor {
+	animation-direction: normal;
+	animation-play-state: running;
+}
+
+.closeNor {
+	animation-direction: reverse;
+	animation-play-state: running;
+}
+
+.no-anim {
+	animation: none;
+}
+
+.closed {
+	height: 0px;
+	padding: 0px 20px;
+}
+
+.bottom {
+	bottom: 5px;
+}
+
+.openHer {
+	animation-name: heartMove;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-play-state: running;
+	animation-fill-mode: forwards;
+}
+
+.closeHer {
+	animation-name: heartMove;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-play-state: running;
+	animation-direction: reverse;
+	animation-fill-mode: forwards;
+}
+
+.beating > img {
+	animation-name: beat;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+
+.openedHer {
+	top: 85%;
+	transform: translate(-50%, 0);
+	
+}
+
+/* 
+  OPENING SECTION STYLES
+  ======================
+  This section covers the entire viewport and displays the opening text messages.
+  It has a high z-index to appear above everything else initially.
+*/
+.opening-section {
+  position: fixed; /* Fixed position so it stays in place during scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #efafd8; /* Match the body background color */
+  z-index: 1000; /* High z-index to appear above envelope */
+}
+
+/* 
+  HIDDEN STATE FOR OPENING SECTION
+  =================================
+  When all text messages are done, JavaScript adds the 'hidden' class.
+  This smoothly fades out the entire opening section and prevents any
+  interaction with it (pointer-events: none).
+*/
+.opening-section.hidden {
+  opacity: 0; /* Fade out */
+  pointer-events: none; /* Disable all mouse interactions */
+  transition: opacity 0.8s ease; /* Smooth fade out transition */
+}
+
+/* 
+  TEXT CONTAINER
+  ==============
+  This container holds all the text elements and centers them on the screen.
+  All text elements are absolutely positioned within this container, so they
+  stack on top of each other at the same location.
+*/
+.text-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 100;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* 
+  TEXT ELEMENT (DEFAULT STATE)
+  =============================
+  Each text element starts in a hidden state:
+  - opacity: 0 makes it invisible
+  - translateY(50px) positions it 50px below its final position
+  
+  When JavaScript adds the 'active' class, the text will smoothly:
+  - Fade in (opacity goes to 1)
+  - Slide up to its final position (translateY goes to 0)
+  
+  The transition property makes this happen smoothly over 0.8 seconds.
+*/
+.text {
+  position: absolute; /* All texts stack at the same position */
+  opacity: 0; /* Start invisible */
+  transform: translateY(50px); /* Start 50px below final position */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth fade and slide animation */
+  font-family: 'Island Moments', cursive; /* Elegant cursive font */
+  font-size: 4.5rem; /* Large, readable size */
+  font-weight: 100; /* Thin weight for elegance */
+  color: #fff; /* White text */
+  text-shadow: #fff 0 0 10px; /* Glowing effect for better visibility */
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* 
+  TEXT HEADING STYLES
+  ===================
+  The h2 elements inside .text get the same styling for consistency.
+*/
+.text h2 {
+  margin: 0;
+  font-family: 'Island Moments', cursive;
+  top: 50%;
+  font-size: 4.5rem;
+  font-weight: 100;
+  color: #fff;
+  text-shadow: #fff 0 0 10px;
+}
+
+/* 
+  ACTIVE TEXT STATE
+  =================
+  When JavaScript adds the 'active' class to a text element, it becomes:
+  - Fully visible (opacity: 1)
+  - In its final position (translateY(0))
+  
+  The transition property defined in .text makes this change smooth and elegant.
+*/
+.text.active {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* In final position */
+}
+
+/* 
+  RESPONSIVE DESIGN
+  =================
+  Adjust text sizes for smaller screens to ensure readability and proper layout.
+  These breakpoints ensure the text looks good on tablets and mobile devices.
+*/
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+  .text h2 {
+    font-size: 2.5rem; /* Smaller font for tablets */
+    padding: 0 15px; /* Add horizontal padding */
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .text h2 {
+    font-size: 2rem; /* Even smaller font for phones */
+    line-height: 1.4; /* Better line spacing for readability */
+	}
+}
